@@ -1,0 +1,235 @@
+Features:
+
+>first did CV and grid search
+>then: df of features/coefs_ or feature_imps (trees)
+>then: plotted
+>then: combined metric -> plot
+
+filenames:
+
+df_corrmat_sp - feature[index] / 'SalePrice_Log'
+
+df_ridge_coef - feature[index] / 'Coef_Ridge'
+
+df_lasso_coefs - feature[index] / 'Coef_Lasso'
+
+df_elasticnet_coef - feature[index] / 'Coef_Elastic'
+
+gbm_df - feature[index] / 'FI_GBM'
+
+fi_xgb_sorted_df - feature[index] / 'PI_XGB'
+
+>>combine df's
+>>do plot w/ dots
+>>create combined metric
+>>sort and plot
+>>go through OLS adding one feature at a time
+>>capture array of RMSE for each
+>>draw grid of this
+>>choose optimal feature count
+>>create final model w/ coefficients
+>>return them to original scales?
+
+
+lr = linearmodel
+ols = 
+
+rmse_mlr = []
+r2_mlr - []
+coefs_mlr = []
+
+for i in len ( ) :
+	frame = X.iloc[:, ;i]
+	ols.fit(frame, target_log)
+	r2_mlr.append(ols.score(frame, target_log)
+	rmse_mlr.append(ols. ?
+	coefs_mlr.append(ols.coef_)
+coefs_mlr = pd.DataFrame(coefs_mlr, index = X.columns.T)
+
+
+corr w/ SalePrice
+Grid
+Ridge
+ElasticNet
+GB
+XGB
+
+Ridge
+ElasticNet
+Lasso
+GradientBoost
+XGBoost
+
+ElasticNet = 0
+
+Exterior_CemntBd
+BsmtFinType1_ALQ
+LotShape_IR3
+LotShape_IR1
+Exterior_BrkComm
+BsmtFinType1_BLQ
+Age
+BsmtFinType1_Rec
+GarageType_Attchd
+Exterior_VinylSd
+Electrical_Yes
+Exterior_WdShing
+LandContour_Oth
+LandContour_Lvl
+ExterCond_Ex
+GarageType_None
+BsmtQual_Gd
+BsmtFinType1_None
+Foundation_Oth
+ExterQual_Avg
+Foundation_CBlock
+BsmtFinType1_GLQ
+
+Lasso = 0
+
+BsmtFinType1_Rec
+KitchenQual_Avg
+Electical_Yes
+CentralAir_Yes
+HeatingQC_Gd
+BsmtFinType1_GLQ	0.000000
+BsmtFinType1_None	-0.000000
+BsmtFinType1_LwQ	-0.000000
+GarageType_Attchd	0.000000
+BsmtFinType1_BLQ	-0.000000
+BsmtFinType1_ALQ	0.000000
+KitchenQual_Gd	0.000000
+MoSold	0.000000
+GarageType_None	-0.000000
+BsmtQual_Avg	-0.000000
+PavedDrive_Yes	0.000000
+Fence_Yes	-0.000000
+Exterior_BrkComm	-0.000000
+Exterior_CemntBd	0.000000
+Exterior_HdBoard	-0.000000
+Exterior_MetalSd	0.000000
+Exterior_Other	0.000000
+Exterior_VinylSd	0.000000
+Exterior_Wd Sdng	-0.000000
+Exterior_WdShing	0.000000
+NeighType_2	-0.000000
+GarageType_Oth	-0.000000
+BsmtQual_Gd	0.000000
+LandSlope_Oth	0.000000
+TotRmsAbvGrd	0.000000
+Age	-0.000000
+MSZoning_RL	0.000000
+LotShape_IR1	0.000000
+LotShape_IR2	0.000000
+LotShape_IR3	-0.000000
+LotShape_Reg	-0.000000
+LandContour_Lvl	-0.000000
+LandContour_Oth	0.000000
+LotConfig_Inside	-0.000000
+LotConfig_Oth	0.000000
+LandSlope_Gtl	-0.000000
+Foundation_Oth	-0.000000
+ExterCond_Avg	0.000000
+BldgType_Oth	-0.000000
+RoofStyle_Gable	-0.000000
+Foundation_CBlock	-0.000000
+ExterCond_Gd	-0.000000
+ExterCond_Ex	0.000000
+BedroomAbvGr	-0.000000
+ExterQual_Gd	-0.000000
+ExterQual_Ex	0.000000
+ExterQual_Avg	-0.000000
+MasVnrType_Oth	0.000000
+MasVnrType_Brick	-0.000000
+RoofStyle_Oth	0.000000
+
+Gradient Boost:
+
+	RoofStyle_Gable	0.002824
+34	RoofStyle_Oth	0.002818
+31	BldgType_1Fam	0.002760
+32	BldgType_Oth	0.001898
+14	MoSold	0.001818
+66	2Story_Y	0.001792
+68	Exterior_BrkComm	0.001632
+44	Foundation_Oth	0.001393
+30	LandSlope_Oth	0.001352
+29	LandSlope_Gtl	0.001174
+67	RoadRail_Yes	0.001156
+15	YrSold	0.001087
+63	GarageType_Oth	0.001051
+72	Exterior_Other	0.001020
+24	LotShape_Reg	0.000919
+43	Foundation_CBlock	0.000894
+22	LotShape_IR2	0.000719
+58	Electrical_Yes	0.000700
+69	Exterior_CemntBd	0.000609
+25	LandContour_Lvl	0.000553
+70	Exterior_HdBoard	0.000527
+26	LandContour_Oth	0.000502
+73	Exterior_VinylSd	0.000476
+21	LotShape_IR1	0.000453
+65	Fence_Yes	0.000380
+49	BsmtFinType1_ALQ	0.000347
+40	ExterCond_Avg	0.000312
+23	LotShape_IR3	0.000290
+36	MasVnrType_Oth	0.000289
+71	Exterior_MetalSd	0.000277
+74	Exterior_Wd Sdng	0.000221
+42	ExterCond_Gd	0.000211
+35	MasVnrType_Brick	0.000198
+75	Exterior_WdShing	0.000181
+28	LotConfig_Oth	0.000176
+50	BsmtFinType1_BLQ	0.000146
+27	LotConfig_Inside	0.000143
+52	BsmtFinType1_LwQ	0.000118
+54	BsmtFinType1_Rec	0.000108
+41	ExterCond_Ex	0.000018
+
+
+Feature Importance for XGBoost:
+44	LandSlope_Gtl	0.000998
+43	GarageType_Oth	0.000997
+42	Exterior_VinylSd	0.000990
+41	Exterior_Other	0.000778
+40	LotShape_IR2	0.000723
+39	LandContour_Lvl	0.000599
+38	LotShape_IR3	0.000597
+37	ExterQual_Ex	0.000514
+36	Electrical_Yes	0.000511
+35	LotShape_Reg	0.000509
+34	BldgType_1Fam	0.000488
+33	Exterior_HdBoard	0.000454
+32	BsmtFinType1_ALQ	0.000422
+31	Foundation_CBlock	0.000417
+30	BsmtQual_Avg	0.000414
+29	BsmtFinType1_BLQ	0.000413
+28	Fence_Yes	0.000396
+27	RoofStyle_Gable	0.000330
+26	Exterior_MetalSd	0.000323
+25	GarageType_Attchd	0.000307
+24	LotConfig_Inside	0.000286
+23	BsmtQual_Gd	0.000282
+22	MasVnrType_Brick	0.000274
+21	ExterCond_Avg	0.000257
+20	Exterior_Wd Sdng	0.000236
+19	HeatingQC_Gd	0.000223
+18	PavedDrive_Yes	0.000221
+17	BsmtFinType1_None	0.000201
+16	BsmtFinType1_Rec	0.000198
+15	LotConfig_Oth	0.000189
+14	Exterior_CemntBd	0.000183
+13	RoofStyle_Oth	0.000170
+12	BsmtFinType1_GLQ	0.000168
+11	MSZoning_RL	0.000168
+10	LotShape_IR1	0.000166
+9	BsmtFinType1_LwQ	0.000160
+8	ExterCond_Gd	0.000128
+7	Foundation_PConc	0.000126
+6	LandContour_Oth	0.000101
+5	ExterQual_Gd	0.000064
+4	MasVnrType_Oth	0.000054
+3	KitchenQual_Gd	0.000052
+2	Exterior_WdShing	0.000050
+1	LandSlope_Oth	0.000021
+0	ExterCond_Ex	0.000000
